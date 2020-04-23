@@ -1,7 +1,7 @@
 'use strict';
 
-/* let appData = {
-    money: undefined,
+let appData = {
+    budget: undefined,
     timeData: undefined,
     expenses: {},
     optionalExpenses: {},
@@ -12,24 +12,61 @@
 let money = +prompt("Ваш бюджет на месяц?", "50000"); //бюджет на месяц
 let time = prompt("Введите дату в формате YYYY-MM-DD");
 
-appData.money = money;
+appData.budget = money;
 appData.timeData = time;
+ 
+for (let i = 0; i < 2; i++) {
+    let itemExpenses = prompt("Введите обязательную статью расходов в этом месяце");
+    let costItemExpenses = prompt("Во сколько обойдется?");
 
-let OneItemExpenses = prompt("Введите обязательную статью расходов в этом месяце");
-let MoneyOneItemExpenses = prompt("Во сколько обойдется?");
+    if (typeof(itemExpenses) === "string" && typeof(itemExpenses) != null &&  typeof(costItemExpenses) != null &&
+    itemExpenses != "" && costItemExpenses != "" && itemExpenses.length < 50) {
+        console.log("done");
+        appData.expenses[itemExpenses] = costItemExpenses;
+    } else {
+    }
+}
 
-appData.expenses[OneItemExpenses] = MoneyOneItemExpenses;
+/* let i = 0;
+while (i < 2) {
+    let itemExpenses = prompt("Введите обязательную статью расходов в этом месяце");
+    let costItemExpenses = prompt("Во сколько обойдется?");
 
-let TwoItemExpenses = prompt("Введите обязательную статью расходов в этом месяце");
-let MoneyTwoItemExpenses = prompt("Во сколько обойдется?");
+    if (typeof(itemExpenses) === "string" && typeof(itemExpenses) != null &&  typeof(costItemExpenses) != null &&
+    itemExpenses != "" && costItemExpenses != "" && itemExpenses.length < 50) {
+        console.log("done");
+        appData.expenses[itemExpenses] = costItemExpenses;
+    } else {
+    }
+    i++;
+}; */
 
-appData.expenses[TwoItemExpenses] = MoneyTwoItemExpenses;
+/* let i = 0;
+do {
+    let itemExpenses = prompt("Введите обязательную статью расходов в этом месяце");
+    let costItemExpenses = prompt("Во сколько обойдется?");
 
-alert("Ваш бюджет на 1 день " + appData.money/30);
+    if (typeof(itemExpenses) === "string" && typeof(itemExpenses) != null &&  typeof(costItemExpenses) != null &&
+    itemExpenses != "" && costItemExpenses != "" && itemExpenses.length < 50) {
+        console.log("done");
+        appData.expenses[itemExpenses] = costItemExpenses;
+    } else {
+    }
+    i++;
+} while (i < 2); */
 
-// console.log(appData);
+appData.moneyPerDey = appData.budget/30;
 
-console.log(typeof(null));
- */
-let nnnn = prompt("Ваш бюджет на месяц?", "50000");
-console.log(typeof(nnnn));
+alert("Ежедневный бюджет " + appData.moneyPerDey);
+
+if (appData.moneyPerDey < 100) {
+    console.log("Минимальный уровень достатка");
+} else if (appData.moneyPerDey > 100 && appData.moneyPerDey < 2000) {
+    console.log("Средний уровень достатка");
+} else if (appData.moneyPerDey > 2000) {
+    console.log("Высокий уровень достатка");
+} else {
+    console.log("Произошла ошибка");
+}
+
+console.log(appData);
