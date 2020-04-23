@@ -24,6 +24,7 @@ for (let i = 0; i < 2; i++) {
         console.log("done");
         appData.expenses[itemExpenses] = costItemExpenses;
     } else {
+        console.log ("bad result");
     }
 }
 
